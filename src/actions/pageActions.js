@@ -1,8 +1,14 @@
-import {TARGET_CLICK} from '../constants/page'
+import { TARGET_CLICK, TICK } from '../constants/page'
 
-export function targetClick(val) {
+export function targetClick() {
     return {
-        type: TARGET_CLICK,
-        payload: val
+        type: TARGET_CLICK
     }
 }
+
+export function tick() {
+    return {
+        type: TICK
+    }
+}
+

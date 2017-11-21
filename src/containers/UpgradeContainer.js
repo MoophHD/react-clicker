@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 // import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
 
-class Control extends Component {
+import UpgradePanel from '../components/UpgradePanel'
+
+class UpgradeContainer extends Component {
     render() {
         return(
             <div className="col-md-5">
-                1
+                <UpgradePanel id={0} key={0}/>
             </div>
         )
     }
 }
-
 // function mapStateToProps(state) {
 //     return {
 //       isActive: state.player.isActive,
@@ -24,6 +25,6 @@ class Control extends Component {
 //         pageActions: bindActionCreators(pageActions, dispatch)
 //     }
 // }
-export default connect(null, null)(Control)
+export default connect(null, null)(UpgradeContainer)
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Control)
