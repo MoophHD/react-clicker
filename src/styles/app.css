@@ -9,13 +9,13 @@
 }
 
 body {
-  padding: 0;
+  padding-top: 5px;
   margin: 0;
   font-weight: 300;
   line-height: 1.45;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
-  color: #333;
+  color: #4C5454;
   overflow: hidden;
 }
 
@@ -24,17 +24,6 @@ body {
   width: 250px;
   background-color: #FF79FF;
   border-radius: 50%;
-}
-
-.upgradePanel {
-  background-color: #63FFFF;
-}
-
-.test1 {
-  background-color: #4e1cda;
-}
-.test1 {
-  background-color: tomato;
 }
 
 .stats h1 {

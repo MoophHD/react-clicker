@@ -15,7 +15,7 @@ let initialState = {
                 extendCost: 25,
                 levelUpCost: 5000,
                 level: 0,
-                size: 0
+                extendsCount: 0
             }
         },
         ids: [0, 1, 2]
@@ -48,7 +48,7 @@ export default function page(state=initialState, action) {
 
             price = upgrade.extendCost;
 
-            upgrade.size++;
+            upgrade.extendsCount++;
             upgrade.extendCost*=extendCostMod;
 
             return (
