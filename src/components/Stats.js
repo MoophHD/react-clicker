@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import FormattedNum from './FormattedNum'
+
 class Stats extends Component {
     render() {
         const {score, perClick, perTick, clickMod} = this.props;
         return(
             <div className="stats">
-                <h1>score: {score}</h1>
-                <h1>perClick: {perClick*clickMod}</h1>
-                <h1>perSec: {perTick/4}</h1>
+                <h1>score: <FormattedNum num={score}/></h1>
+                <h1>perClick: <FormattedNum num={perClick*clickMod}/></h1>
+                <h1>perSec: <FormattedNum num={perTick/4}/></h1>
             </div>
         )
     }

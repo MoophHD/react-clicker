@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FormattedNum from './FormattedNum'
+
 function PanelLevel(props) {
     const style = {
         backgroundColor: 'none'
     }
     return(
         <div onClick={props.levelupUpgrade} style={style}>
-            <div >{props.levelUpCost}</div>
+            <div ><FormattedNum num={props.levelUpCost}/></div>
             <div >
                 {props.level}
             </div>
