@@ -22,7 +22,7 @@ class GameArea extends Component {
 
     render() {
         return(
-            <div className="col-md-7">
+            <div className="col-md-5">
                 <Stats />
                 <ClickTarget />
             </div>

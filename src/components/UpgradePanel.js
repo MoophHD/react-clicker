@@ -10,16 +10,41 @@ import PanelLevel from './PanelLevel'
 
 
 class UpgradePanel extends Component {
+    constructor(props) {
+        super(props);
+        
+        this._id = this.props.id;
+        this._extendUpgrade = this.props.actions.extendUpgrade;
+        this._levelupUpgrade = this.props.actions.levelupUpgrade;
+        
+        this.safeExtend = this.safeExtend.bind(this);
+        this.safeLevelup = this.safeLevelup.bind(this);
+    }
+    safeExtend() {
+        const {score, extendCost} = this.props;
+        console.log(score);
+        console.log(extendCost);
+        if (score >= extendCost) {
+            this._extendUpgrade(this._id)
+        }
+    }
+
+    safeLevelup() {
+        const {score, levelUpCost} = this.props;
+
+        if (score >= levelUpCost) {
+            this._levelupUpgrade(this._id);
+        }
+    }
+
     render() {
         const { levelUpCost,
                 extendCost, 
                 value, 
                 level, 
                 name, 
-                id, 
                 extendsCount } = this.props;
 
-        const { extendUpgrade, levelupUpgrade } = this.props.actions;
 
         const style = {
             padding: '5px',
@@ -39,12 +64,12 @@ class UpgradePanel extends Component {
                 <PanelExtend 
                     extendCost={extendCost}
                     extendsCount={extendsCount}
-                    extendUpgrade={extendUpgrade.bind(null, id)}
+                    extendUpgrade={this.safeExtend}
                     />
                 <PanelLevel                     
                     levelUpCost={levelUpCost}
                     level={level}
-                    levelupUpgrade={levelupUpgrade.bind(null, id)}
+                    levelupUpgrade={this.safeLevelup}
                     maxLevel={20}
                     />
             </div>
@@ -60,7 +85,8 @@ function mapStateToProps(state, ownProps) {
         value: self.value,
         level: self.level,
         name: self.name,
-        extendsCount: self.extendsCount
+        extendsCount: self.extendsCount,
+        score: state.page.score
     }
   }
 

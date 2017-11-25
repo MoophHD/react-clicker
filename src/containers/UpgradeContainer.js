@@ -7,7 +7,7 @@ import UpgradePanel from '../components/UpgradePanel'
 class UpgradeContainer extends Component {
     render() {
         return(
-            <div className="col-md-5">
+            <div className="col-md-7">
                 <UpgradePanel id={0} key={0}/>
             </div>
         )
