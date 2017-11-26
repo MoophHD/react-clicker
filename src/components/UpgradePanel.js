@@ -22,8 +22,6 @@ class UpgradePanel extends Component {
     }
     safeExtend() {
         const {score, extendCost} = this.props;
-        console.log(score);
-        console.log(extendCost);
         if (score >= extendCost) {
             this._extendUpgrade(this._id)
         }

@@ -1,4 +1,4 @@
-import { TARGET_CLICK, TICK } from '../constants/page'
+import { TARGET_CLICK, TICK, SET_MODIFIERS } from '../constants/page'
 
 export function targetClick() {
     return {
@@ -12,3 +12,9 @@ export function tick() {
     }
 }
 
+export function setModifiers(obj) {
+    return {
+        type: SET_MODIFIERS,
+        payload: obj
+    }
+}

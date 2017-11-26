@@ -9,7 +9,7 @@ class ClickTarget extends Component {
         const { targetClick } = this.props.actions;
 
         return(
-            <div onClick={() => targetClick()} className="clickTarget">
+            <div onClick={targetClick} className="clickTarget">
             </div>
         )
     }
