@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
 
@@ -9,7 +9,7 @@ import PanelExtend from './PanelExtend'
 import PanelLevel from './PanelLevel'
 
 
-class UpgradePanel extends Component {
+class UpgradePanel extends PureComponent {
     constructor(props) {
         super(props);
         
@@ -41,29 +41,48 @@ class UpgradePanel extends Component {
                 value, 
                 level, 
                 name, 
-                extendsCount } = this.props;
+                extendsCount,
+                iconForm,
+                iconColor } = this.props;
 
 
-        const style = {
+        const coreStyle = {
             padding: '5px',
             height: '75px',
             display: 'grid',
             gridTemplateColumns: '[hirearea] 80% [updatearea] 20%',
-            backgroundColor: '#F1F1F1'
+            backgroundColor: '#F1F1F1',
+            marginBottom: '35px'
         }
         const styleAbsolute = {
             pointerEvents: 'none',
             position: 'absolute'
         }
+
+        const iconStyle = {
+            backgroundColor: iconColor,
+            marginRight: '50px',
+            height: '65px',
+            width: '65px'
+        }
+
+
+        if (iconForm == "circle") {
+            iconStyle.borderRadius = '50%';
+        } else if (iconForm == "square") {
+            iconStyle.borderRadius = '5%';
+        }
+
+
         return(
-            <div style={style}>
-                {/* <h1 style={styleAbsolute}>{name}</h1> */}
-                {/* <div  style={styleAbsolute}>value {value}</div> */}
+            <div style={coreStyle}>
                 <PanelExtend 
                     extendCost={extendCost}
                     extendsCount={extendsCount}
-                    extendUpgrade={this.safeExtend}
-                    />
+                    extendUpgrade={this.safeExtend}>
+                    <div style={iconStyle}></div>
+                </PanelExtend>
+
                 <PanelLevel                     
                     levelUpCost={levelUpCost}
                     level={level}
@@ -87,18 +106,6 @@ function mapStateToProps(state, ownProps) {
         score: state.page.score
     }
   }
-
-//   function mapStateToProps(state, ownProps) {
-//     let self = state.page.upgrades.byid[ownProps.id];
-//     return {
-//         levelUpCost: state.page.upgrades.byid[ownProps.id].levelUpCost,
-//         extendCost: state.page.upgrades.byid[ownProps.id].extendCost,
-//         value: state.page.upgrades.byid[ownProps.id].value,
-//         level: state.page.upgrades.byid[ownProps.id].level,
-//         size: state.page.upgrades.byid[ownProps.id].size,
-//         name: state.page.upgrades.byid[ownProps.id].name
-//     }
-//   }
 
 function mapDispatchToProps(dispatch) {
     return {

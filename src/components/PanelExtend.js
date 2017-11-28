@@ -10,16 +10,9 @@ function PanelExtend(props) {
         alignItems: 'center'
     }
 
-    const iconStyle = {
-        backgroundColor: '#1EA896',
-        marginRight: '5px',
-        height: '65px',
-        width: '65px',
-        borderRadius: '50%'
-    }
     return(
         <div onClick={props.extendUpgrade} style={style}>
-            <div style={iconStyle}></div>
+            {props.children}
             <div>
                 <div style={{fontSize: '2em', fontWeight: 'bold'}}><FormattedNum num={props.extendCost}/></div>
                 <div style={{fontSize: '0.85em', marginTop: '-5px'}}>

@@ -18,7 +18,7 @@ class GameArea extends PureComponent {
         let grades = this.props.upgrades;
         this.lastUpgrades = JSON.stringify(grades);
         this.calculateModifiers(grades);
-        // this.intervalId = setInterval(() => this.tick(), 250);
+        this.intervalId = setInterval(() => this.tick(), 250);
     }
 
     componentWillReceiveProps(nextProps) {

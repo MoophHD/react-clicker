@@ -5,26 +5,45 @@ import {connect} from 'react-redux';
 import UpgradePanel from '../components/UpgradePanel'
 
 class UpgradeContainer extends Component {
+    componentWillMount() {
+        this.icons = {
+            0: {
+                form: "square",
+                color: "#1EA996"
+            },           
+            1: {
+                form: "circle",
+                color: "#FF715B"
+            }
+        }
+    }
+
     render() {
+        const ids = this.props.ids;
+        const icons = this.icons;
+        
+        let icon, iconForm, iconColor;
         return(
             <div className="col-md-7">
-                <UpgradePanel id={0} key={0}/>
+                {ids.map((id) => {
+                    icon = icons[id];
+                    iconForm = icon.form;
+                    iconColor = icon.color;
+                    return (<UpgradePanel 
+                        id={id} 
+                        key={`_upgrade${id}`}
+                        iconForm={iconForm}
+                        iconColor={iconColor}/>)
+                    }
+                )}
             </div>
         )
     }
 }
-// function mapStateToProps(state) {
-//     return {
-//       isActive: state.player.isActive,
-//       score: state.page.score
-//     }
-//   }
+function mapStateToProps(state) {
+    return {
+      ids: state.page.upgrades.ids
+    }
+  }
   
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         pageActions: bindActionCreators(pageActions, dispatch)
-//     }
-// }
-export default connect(null, null)(UpgradeContainer)
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Control)
+export default connect(mapStateToProps, null)(UpgradeContainer)
